@@ -4,9 +4,7 @@ const serverlessConfiguration: AWS = {
   service: 'certificateserverless',
   frameworkVersion: '3',
   plugins: [
-    'serverless-esbuild', 
-    'serverless-dynamodb-local',
-    'serverless-offline'
+    'serverless-esbuild', 'serverless-dynamodb-local', 'serverless-offline',
   ],
   provider: {
     name: 'aws',

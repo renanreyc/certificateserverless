@@ -1,4 +1,3 @@
-// dynamodbClient.ts
 import { DynamoDB } from 'aws-sdk';
 
 const options = {
