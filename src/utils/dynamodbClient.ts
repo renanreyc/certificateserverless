@@ -1,4 +1,5 @@
-import { DynamoDB } from 'aws-sdk';
+import { DynamoDBDocument } from "@aws-sdk/lib-dynamodb";
+import { DynamoDB } from "@aws-sdk/client-dynamodb";
 
 const options = {
   region: 'localhost',
@@ -15,5 +16,5 @@ const isOffline = () => {
 };
 
 export const document = isOffline()
-  ? new DynamoDB.DocumentClient(options)
-  : new DynamoDB.DocumentClient();
+  ? DynamoDBDocument.from(new DynamoDB(options))
+  : DynamoDBDocument.from(new DynamoDB());

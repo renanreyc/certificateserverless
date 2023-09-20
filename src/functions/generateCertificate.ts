@@ -13,15 +13,17 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     // id, name, grade
     const { id, name, grade } = JSON.parse(event.body) as ICreateCertificate;
     
-    await document.put({
-        TableName: "users_certificate",
-        Item: {
-            id,
-            name,
-            grade,
-            created_at: new Date().getTime(),
-        }
-    }).promise();
+    await document
+        .put({
+            TableName: "users_certificate",
+            Item: {
+                id,
+                name,
+                grade,
+                created_at: new Date().getTime(),
+            }
+    })
+    
 
     const response = await document.query({
         TableName: "users_certificate",
@@ -29,7 +31,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
         ExpressionAttributeValues: {
             ":id": id
         }
-    }).promise();
+    })
     
     return {
         statusCode: 201,
